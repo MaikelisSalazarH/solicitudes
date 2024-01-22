@@ -13,20 +13,13 @@ return new class extends Migration
     {
         Schema::create('solicituds', function (Blueprint $table) {
             $table->id();
+            $table->string('nombre_solicitante', 255);
+            $table->string('nun_telefono', 15);
+            $table->string('titulo_solicitud', 255);
             $table->text('descripcion', 500);
             $table->unsignedBigInteger('estado_id')->nullable();
-            $table->unsignedBigInteger('solicitante_id')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->timestamps();
-
-            $table->foreign('solicitante_id')->references('id')->on('solicitantes')
-                ->onUpdate('cascade')->onDelete('cascade');
-
-            $table->foreign('estado_id')->references('id')->on('estados')
-                ->onUpdate('cascade')->onDelete('cascade');
-
-            $table->foreign('user_id')->references('id')->on('users')
-                ->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

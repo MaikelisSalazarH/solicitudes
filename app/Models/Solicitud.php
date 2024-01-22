@@ -16,11 +16,6 @@ class Solicitud extends Model
         return $this->belongsTo(Estado::class);
     }
 
-    public function solicitante()
-    {
-        return $this->belongsTo(Solicitante::class);
-    }
-
     public function usuario()
     {
         return $this->belongsTo(User::class); 
